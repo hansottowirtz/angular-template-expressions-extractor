@@ -1,4 +1,5 @@
-import { GENERATOR, State } from "astring";
+import { GENERATOR, State } from 'astring';
+import { check as checkReserved } from 'reserved-words';
 
 export const ANGULAR_GENERATOR: typeof GENERATOR = {
   ...GENERATOR,
@@ -24,10 +25,18 @@ export const ANGULAR_GENERATOR: typeof GENERATOR = {
   },
   ['NGMicrosyntaxExpression' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {
     const t = this as any;
+    if (node.alias) {
+      t[node.alias.type](node.alias, state);
+      state.write('/* as */ = ');
+    }
     t[node.expression.type](node.expression, state);
   },
   ['NGMicrosyntaxKey' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {
-    state.write(`"${node.name}"`);
+    if (checkReserved(node.name, 'next')) {
+      state.write(`"${node.name}"`);
+    } else {
+      state.write(node.name);
+    }
   },
   ['NGMicrosyntaxKeyedExpression' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {
     const t = this as any;
@@ -44,10 +53,16 @@ export const ANGULAR_GENERATOR: typeof GENERATOR = {
     }
   },
   ['NGMicrosyntaxLet' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {
-    state.write('"let"');
+    state.write('/* let */');
+    // console.log(node)
+    const t = this as any;
+    t[node.key.type](node.key, state);
   },
   ['NGMicrosyntaxAs' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {
-    state.write('"as"');
+    const t = this as any;
+    t[node.alias.type](node.alias, state);
+    state.write('/* as */ = ');
+    t[node.key.type](node.key, state);
   },
   ['NGEmptyExpression' as any]: function (this: typeof ANGULAR_GENERATOR, node: any, state: State) {},
   // possible type, but not used in the parser
