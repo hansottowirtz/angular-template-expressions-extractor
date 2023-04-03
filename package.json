@@ -1,6 +1,6 @@
 {
   "name": "angular-template-expressions-extractor",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -26,7 +26,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "angular-estree-parser": "^6.1.0",
+    "angular-estree-parser": "^6.2.0",
     "angular-html-parser": "^4.0.1",
     "astring": "^1.8.4",
     "reserved-words": "^0.1.2",

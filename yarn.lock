@@ -535,10 +535,10 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-angular-estree-parser@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/angular-estree-parser/-/angular-estree-parser-6.1.0.tgz#e67b92d9a4e3e7c50fdbc77b91367c9dbe5b2615"
-  integrity sha512-uhv3BQlHTWB7VlFw+3vPkdlMWE/8B1iwfp5bz8/0gPCuF3es0BCV2ssaG4th4AHlulYUW1VHe35FKxmP2mOS+w==
+angular-estree-parser@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/angular-estree-parser/-/angular-estree-parser-6.2.0.tgz#773144e398043f5c1c6da57eb153957c3bcb3e47"
+  integrity sha512-Iaa9QdFW5L+frdep/r5XCrNTW0edM+RRw91mWV4SjCGi3MPncaqpt9vUzmjCX/kMQIcB20uSeC3H27qJit9nUA==
   dependencies:
     lines-and-columns "^2.0.3"
     tslib "^2.5.0"
